@@ -1,0 +1,62 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ArbGasInfo",
+  "sourceName": "contracts/util/ArbGasInfo.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getL1BaseFeeEstimate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPricesInWei",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b5060b48061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806341b247a8146037578063f5d6ded7146070575b600080fd5b60008080808080604080519687526020870195909552938501929092526060840152608083015260a082015260c0015b60405180910390f35b60405160008152602001606756fea2646970667358221220f0bf8730915c28bf319d399bf74288de22b2b3ae60dd8a15e8fe0da9dc38cf8064736f6c63430008160033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806341b247a8146037578063f5d6ded7146070575b600080fd5b60008080808080604080519687526020870195909552938501929092526060840152608083015260a082015260c0015b60405180910390f35b60405160008152602001606756fea2646970667358221220f0bf8730915c28bf319d399bf74288de22b2b3ae60dd8a15e8fe0da9dc38cf8064736f6c63430008160033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

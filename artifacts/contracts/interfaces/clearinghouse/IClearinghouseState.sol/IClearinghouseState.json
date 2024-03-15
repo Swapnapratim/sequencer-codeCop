@@ -1,0 +1,70 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IClearinghouseState",
+  "sourceName": "contracts/interfaces/clearinghouse/IClearinghouseState.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getMaxHealthGroup",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "productId",
+          "type": "uint32"
+        }
+      ],
+      "name": "getRisk",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "int128",
+              "name": "longWeightInitialX18",
+              "type": "int128"
+            },
+            {
+              "internalType": "int128",
+              "name": "shortWeightInitialX18",
+              "type": "int128"
+            },
+            {
+              "internalType": "int128",
+              "name": "longWeightMaintenanceX18",
+              "type": "int128"
+            },
+            {
+              "internalType": "int128",
+              "name": "shortWeightMaintenanceX18",
+              "type": "int128"
+            },
+            {
+              "internalType": "int128",
+              "name": "largePositionPenaltyX18",
+              "type": "int128"
+            }
+          ],
+          "internalType": "struct RiskHelper.Risk",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

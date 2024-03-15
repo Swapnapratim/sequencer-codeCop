@@ -1,0 +1,20 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "productId",
+        "type": "uint32"
+      },
+      {
+        "internalType": "int128",
+        "name": "priceX18",
+        "type": "int128"
+      }
+    ],
+    "name": "setPriceX18",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
