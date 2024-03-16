@@ -168,7 +168,6 @@ export interface OffchainBookInterface extends Interface {
       | "claimSequencerFee"
       | "clearinghouse"
       | "dumpFees"
-      | "eip712Domain"
       | "engine"
       | "fees"
       | "filledAmounts"
@@ -192,11 +191,7 @@ export interface OffchainBookInterface extends Interface {
   ): FunctionFragment;
 
   getEvent(
-    nameOrSignatureOrTopic:
-      | "EIP712DomainChanged"
-      | "FillOrder"
-      | "Initialized"
-      | "OwnershipTransferred"
+    nameOrSignatureOrTopic: "FillOrder" | "Initialized" | "OwnershipTransferred"
   ): EventFragment;
 
   encodeFunctionData(
@@ -208,10 +203,6 @@ export interface OffchainBookInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "dumpFees", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "eip712Domain",
-    values?: undefined
-  ): string;
   encodeFunctionData(functionFragment: "engine", values?: undefined): string;
   encodeFunctionData(functionFragment: "fees", values?: undefined): string;
   encodeFunctionData(
@@ -298,10 +289,6 @@ export interface OffchainBookInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "dumpFees", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "eip712Domain",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "engine", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "fees", data: BytesLike): Result;
   decodeFunctionResult(
@@ -352,16 +339,6 @@ export interface OffchainBookInterface extends Interface {
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
-}
-
-export namespace EIP712DomainChangedEvent {
-  export type InputTuple = [];
-  export type OutputTuple = [];
-  export interface OutputObject {}
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
 }
 
 export namespace FillOrderEvent {
@@ -480,22 +457,6 @@ export interface OffchainBook extends BaseContract {
   clearinghouse: TypedContractMethod<[], [string], "view">;
 
   dumpFees: TypedContractMethod<[], [void], "nonpayable">;
-
-  eip712Domain: TypedContractMethod<
-    [],
-    [
-      [string, string, string, bigint, string, string, bigint[]] & {
-        fields: string;
-        name: string;
-        version: string;
-        chainId: bigint;
-        verifyingContract: string;
-        salt: string;
-        extensions: bigint[];
-      }
-    ],
-    "view"
-  >;
 
   engine: TypedContractMethod<[], [string], "view">;
 
@@ -624,23 +585,6 @@ export interface OffchainBook extends BaseContract {
     nameOrSignature: "dumpFees"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "eip712Domain"
-  ): TypedContractMethod<
-    [],
-    [
-      [string, string, string, bigint, string, string, bigint[]] & {
-        fields: string;
-        name: string;
-        version: string;
-        chainId: bigint;
-        verifyingContract: string;
-        salt: string;
-        extensions: bigint[];
-      }
-    ],
-    "view"
-  >;
-  getFunction(
     nameOrSignature: "engine"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
@@ -751,13 +695,6 @@ export interface OffchainBook extends BaseContract {
   ): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
 
   getEvent(
-    key: "EIP712DomainChanged"
-  ): TypedContractEvent<
-    EIP712DomainChangedEvent.InputTuple,
-    EIP712DomainChangedEvent.OutputTuple,
-    EIP712DomainChangedEvent.OutputObject
-  >;
-  getEvent(
     key: "FillOrder"
   ): TypedContractEvent<
     FillOrderEvent.InputTuple,
@@ -780,17 +717,6 @@ export interface OffchainBook extends BaseContract {
   >;
 
   filters: {
-    "EIP712DomainChanged()": TypedContractEvent<
-      EIP712DomainChangedEvent.InputTuple,
-      EIP712DomainChangedEvent.OutputTuple,
-      EIP712DomainChangedEvent.OutputObject
-    >;
-    EIP712DomainChanged: TypedContractEvent<
-      EIP712DomainChangedEvent.InputTuple,
-      EIP712DomainChangedEvent.OutputTuple,
-      EIP712DomainChangedEvent.OutputObject
-    >;
-
     "FillOrder(bytes32,bytes32,int128,int128,uint64,uint64,bool,int128,int128,int128)": TypedContractEvent<
       FillOrderEvent.InputTuple,
       FillOrderEvent.OutputTuple,

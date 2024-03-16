@@ -42,7 +42,6 @@ export interface EndpointInterface extends Interface {
       | "depositCollateral"
       | "depositCollateralWithReferral(bytes32,uint32,uint128,string)"
       | "depositCollateralWithReferral(bytes12,uint32,uint128,string)"
-      | "eip712Domain"
       | "executeSlowModeTransactions"
       | "getBook"
       | "getLinkedSigner"
@@ -76,7 +75,6 @@ export interface EndpointInterface extends Interface {
 
   getEvent(
     nameOrSignatureOrTopic:
-      | "EIP712DomainChanged"
       | "Initialized"
       | "OwnershipTransferred"
       | "SubmitTransactions"
@@ -97,10 +95,6 @@ export interface EndpointInterface extends Interface {
   encodeFunctionData(
     functionFragment: "depositCollateralWithReferral(bytes12,uint32,uint128,string)",
     values: [BytesLike, BigNumberish, BigNumberish, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "eip712Domain",
-    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "executeSlowModeTransactions",
@@ -237,10 +231,6 @@ export interface EndpointInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "eip712Domain",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "executeSlowModeTransactions",
     data: BytesLike
   ): Result;
@@ -335,16 +325,6 @@ export interface EndpointInterface extends Interface {
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
-}
-
-export namespace EIP712DomainChangedEvent {
-  export type InputTuple = [];
-  export type OutputTuple = [];
-  export interface OutputObject {}
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
 }
 
 export namespace InitializedEvent {
@@ -453,22 +433,6 @@ export interface Endpoint extends BaseContract {
     ],
     [void],
     "nonpayable"
-  >;
-
-  eip712Domain: TypedContractMethod<
-    [],
-    [
-      [string, string, string, bigint, string, string, bigint[]] & {
-        fields: string;
-        name: string;
-        version: string;
-        chainId: bigint;
-        verifyingContract: string;
-        salt: string;
-        extensions: bigint[];
-      }
-    ],
-    "view"
   >;
 
   executeSlowModeTransactions: TypedContractMethod<
@@ -655,23 +619,6 @@ export interface Endpoint extends BaseContract {
     "nonpayable"
   >;
   getFunction(
-    nameOrSignature: "eip712Domain"
-  ): TypedContractMethod<
-    [],
-    [
-      [string, string, string, bigint, string, string, bigint[]] & {
-        fields: string;
-        name: string;
-        version: string;
-        chainId: bigint;
-        verifyingContract: string;
-        salt: string;
-        extensions: bigint[];
-      }
-    ],
-    "view"
-  >;
-  getFunction(
     nameOrSignature: "executeSlowModeTransactions"
   ): TypedContractMethod<[count: BigNumberish], [void], "nonpayable">;
   getFunction(
@@ -815,13 +762,6 @@ export interface Endpoint extends BaseContract {
   ): TypedContractMethod<[newOwner: AddressLike], [void], "nonpayable">;
 
   getEvent(
-    key: "EIP712DomainChanged"
-  ): TypedContractEvent<
-    EIP712DomainChangedEvent.InputTuple,
-    EIP712DomainChangedEvent.OutputTuple,
-    EIP712DomainChangedEvent.OutputObject
-  >;
-  getEvent(
     key: "Initialized"
   ): TypedContractEvent<
     InitializedEvent.InputTuple,
@@ -844,17 +784,6 @@ export interface Endpoint extends BaseContract {
   >;
 
   filters: {
-    "EIP712DomainChanged()": TypedContractEvent<
-      EIP712DomainChangedEvent.InputTuple,
-      EIP712DomainChangedEvent.OutputTuple,
-      EIP712DomainChangedEvent.OutputObject
-    >;
-    EIP712DomainChanged: TypedContractEvent<
-      EIP712DomainChangedEvent.InputTuple,
-      EIP712DomainChangedEvent.OutputTuple,
-      EIP712DomainChangedEvent.OutputObject
-    >;
-
     "Initialized(uint8)": TypedContractEvent<
       InitializedEvent.InputTuple,
       InitializedEvent.OutputTuple,

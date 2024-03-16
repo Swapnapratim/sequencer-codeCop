@@ -1,0 +1,22 @@
+*.env
+
+.DS_store
+.idea/
+
+*.tsbuildinfo
+dist/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Contracts
+cache
+artifacts
+
+# helper.ts
